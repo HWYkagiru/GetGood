@@ -4,7 +4,7 @@
 
 ## How to use
 
-To execute**GetGood**, follow these steps:
+To execute **GetGood**, follow these steps:
 
 
 2. **Open Roblox**: Launch Roblox and start the game **Bladeball**.
