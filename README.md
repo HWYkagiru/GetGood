@@ -1,6 +1,6 @@
 # GetGood
 
-**GetGood** is an undetected AutoParry for **Bladeball**, featuring advanced prediction algorithms for curves and dots.
+**GetGood** is an **OpenSource undetected AutoParry for **Bladeball**, featuring advanced prediction algorithms for curves and dots.
 
 ## How to use
 
