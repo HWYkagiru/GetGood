@@ -10,6 +10,62 @@ local UIS = game:GetService("UserInputService")
 local Workspace = game:GetService("Workspace")
 local RunService = game:GetService("RunService")
 local VIM = game:GetService("VirtualInputManager")
+local Tweeny = game:GetService("TweenService")
+
+local function showNotf()
+    local NotfGui = Instance.new("ScreenGui")
+    NotfGui.Parent = Plr:WaitForChild("PlayerGui")
+    NotfGui.IgnoreGuiInset = true
+
+    local notfF = Instance.new("Frame")
+    notfF.Size = UDim2.new(0, 280, 0, 60)
+    notfF.Position = UDim2.new(1, 20, 1, -100)
+    notfF.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    notfF.BorderSizePixel = 0
+    notfF.AnchorPoint = Vector2.new(1, 1)
+    notfF.Parent = NotfGui
+
+    local uiCorner = Instance.new("UICorner")
+    uiCorner.CornerRadius = UDim.new(0, 14)
+    uiCorner.Parent = notfF
+
+    local shadow = Instance.new("ImageLabel")
+    shadow.Size = UDim2.new(1, 30, 1, 30)
+    shadow.Position = UDim2.new(0, -15, 0, -15)
+    shadow.BackgroundTransparency = 1
+    shadow.Image = "rbxassetid://1316045217"
+    shadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+    shadow.ImageTransparency = 0.8
+    shadow.ScaleType = Enum.ScaleType.Slice
+    shadow.SliceCenter = Rect.new(10, 10, 118, 118)
+    shadow.Parent = notfF
+
+    local notfL = Instance.new("TextLabel")
+    notfL.Size = UDim2.new(1, -20, 1, -20)
+    notfL.Position = UDim2.new(0, 10, 0, 10)
+    notfL.BackgroundTransparency = 1
+    notfL.Text = "Hello, " .. Plr.Name
+    notfL.TextColor3 = Color3.fromRGB(245, 245, 245)
+    notfL.Font = Enum.Font.GothamBold
+    notfL.TextSize = 18
+    notfL.TextXAlignment = Enum.TextXAlignment.Left
+    notfL.Parent = notfF
+
+    local slideInTween = Tweeny:Create(notfF, TweenInfo.new(0.4, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {
+        Position = UDim2.new(1, -20, 1, -100)
+    })
+
+    local slideOutTween = Tweeny:Create(notfF, TweenInfo.new(0.4, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {
+        Position = UDim2.new(1, 20, 1, -100)
+    })
+
+    slideInTween:Play()
+    slideInTween.Completed:Wait()
+    wait(3)
+    slideOutTween:Play()
+    slideOutTween.Completed:Wait()
+    NotfGui:Destroy()
+end
 
 _G.AutoParryEnabled = false
 _G.BallTrailEnabled = false
@@ -491,5 +547,5 @@ Plr.CharacterAdded:Connect(function()
     end
     screenGui = createGui()
 end)
-
+showNotf()
 print("GetGood(Beta) Succsesfully Executed\n     GitHub: https://github.com/HWYkagiru/GetGood")
